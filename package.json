@@ -1,0 +1,39 @@
+{
+  "name": "aqours",
+  "version": "2.0.0",
+  "description": "data filter preventing front end error",
+  "main": "aqours.js",
+  "scripts": {
+    "test": "echo 1 && exit 0",
+    "major": "npm version major && npm publish",
+    "minor": "npm version minor && npm publish",
+    "patch": "npm version patch && npm publish",
+    "build": "rollup -c",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjonas/aqours.git"
+  },
+  "keywords": [
+    "filter",
+    "data format"
+  ],
+  "author": "fjonas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fjonas/aqours/issues"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-env": "^0.21.2",
+    "rollup-plugin-node-resolve": "^2.0.0"
+  },
+  "homepage": "https://github.com/fjonas/aqours#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
