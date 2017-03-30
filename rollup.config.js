@@ -4,7 +4,7 @@ import commonjs from "rollup-plugin-commonjs"
 
 export default {
     entry: "./src/index.js",
-    dest: "shiny-scroll.js",
+    dest: "aqours.js",
     plugins: [
         resolve(),
         babel({
@@ -13,10 +13,10 @@ export default {
         }),
         commonjs({
             namedExports: {
-                "node_modules/lodash.throttle/index.js": ["throttle"]
+                "node_modules/lodash/index.js": ["lodash"]
             }
         })
     ],
     format: "umd",
-    moduleName: "shiny-scroll"
+    moduleName: "aqours"
 };
