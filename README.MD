@@ -89,16 +89,16 @@ to be continued.
 
 filter data in interceptor
 
-+   **url:**  regular expression, match `config.url`
-+   **match:** function (response),  return whether single rule matches the structure
-+   **strict:** boolean, optional, if true, aqours will remove redundancy
-+   **structure:** object, aqours will filter response according to the structure
++   **`url`:**  regular expression, match `config.url`
++   **`match`:** function (response),  return whether single rule matches the structure
++   **`strict`:** boolean, optional, if true, aqours will remove redundancy
++   **`structure`:** object, aqours will filter response according to the structure
 
 ### structure
 
-+   **type:** array / string [string:[String, Number, Date, Object, Array]], when object aqours will recursive into child object
-+   **custom:** function, was first priority if has custom validate type will be ignored, weather value was validate
-+   **defaultVal:** mixed, default to "invalid value", when type verify failed the origin value will be replaced by default value
++   **`type`:** array / string [string:[String, Number, Date, Object, Array]], when object aqours will recursive into child object
++   **`custom`:** function, was first priority if has custom validate type will be ignored, weather value was validate
++   **`defaultVal`:** mixed, default to "invalid value", when type verify failed the origin value will be replaced by default value
 
 
 
