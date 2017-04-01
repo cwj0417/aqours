@@ -18,7 +18,51 @@ import aqours from "aqours"
 
 ```js
 let structure = {
-    
+    alertType: {
+        type: "String",
+        defaultVal: "紧急"
+    },
+    startTime: {
+        custom: value => value < new Date().valueOf(),
+        defaultVal: new Date().setHours(0).valueOf()
+    },
+    department: {
+        type: "Object", // buxuyao?
+        child: {
+           description: {
+               type: "String"
+           },
+           id: {
+               type: "Number",
+               defaultVal: 0
+           }
+       }
+    },
+    solutions: {
+        type: "Array",// buxuyao?
+        length: length => length >= 5,
+        child: {
+            type: "Number"
+        }
+    },
+    remarks: {
+        type: "Array",// buxuyao?
+        length: length => length === 15,
+        child: {
+            type: "Object",
+            child: {
+                // shortcut for type and no more config
+                message: "String"
+            }
+        }
+    },
+    users: [{
+        // shortcut for elementType "Object" and no length limit
+        CNName: {
+            custom: name => !/^a-zA-Z$/.test(name),
+            defaultVal: "中文名"
+        }
+    }]
 }
 let rules = [{
     url: /events$/,
@@ -51,6 +95,10 @@ filter data in interceptor
 +   **structure:** object, aqours will filter response according to the structure
 
 ### structure
+
++   **type:** array / string [string:[String, Number, Date, Object, Array]], when object aqours will recursive into child object
++   **custom:** function, was first priority if has custom validate type will be ignored, weather value was validate
++   **defaultVal:** mixed, default to "invalid value", when type verify failed the origin value will be replaced by default value
 
 
 
