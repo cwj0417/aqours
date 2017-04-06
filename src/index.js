@@ -37,16 +37,16 @@ const filterObject = function (structure, data) {
         if (isObj(result[key]) || _.isArray(result[key])) {
             result[key] = dispatch(structure[key].child, result[key])
         } else {
-            result[key] = check(structure, result[key])
+            result[key] = check(structure[key], result[key])
         }
     }
     return result
 }
 
 const checkType = {
-    String: "",
-    Number: "",
-    Date: ""
+    String: _.isString,
+    Number: _.isNumber,
+    Date: _.isDate
 }
 
 const defaultConfig = {
@@ -59,8 +59,8 @@ const getDefault = function (defaultVal, type) {
     return defaultVal ? defaultVal : defaultConfig[type] ? defaultConfig[type] : "invalid type"
 }
 
-const check = function ({type: types, custom, defaultVal, length, child} = format, data) {
-    let valid = false, result = _.cloneDeep(data)
+const check = function ({type, custom, defaultVal, length, child} = format, data) {
+    let valid = false, result = _.cloneDeep(data), types = type
     if (typeof format == "string") {
         checkType[format] && checkType[format](result) && (valid = true)
     }
@@ -86,7 +86,7 @@ const check = function ({type: types, custom, defaultVal, length, child} = forma
             types = ["String"]
         }
     }
-    return valid ? result : getDefault(defaultVal, format ? format : types[0])
+    return valid ? result : getDefault(defaultVal, types[0])
 }
 
 export default function (rules, config, data) {
